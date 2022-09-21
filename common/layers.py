@@ -51,6 +51,10 @@ class Affine:
         self.original_x_shape = x.shape
         if x.ndim == 1 :
             x = x.reshape(-1, x.shape[0])
+
+        if x.ndim == 4 :
+            x = x.reshape(x.shape[0], -1)
+
         self.x = x
 
         out = np.dot(self.x, self.W) + self.b
